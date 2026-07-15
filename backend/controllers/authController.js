@@ -22,6 +22,13 @@ const users = [
     password: "admin123",
     role: "Admin",
   },
+    {
+    id: "admin-002",
+    name: "DeskFlow Administrator",
+    email: "admin2@deskflow.com",
+    password: "admin2123",
+    role: "Admin",
+  },
 ];
 
 const login = (req, res) => {
