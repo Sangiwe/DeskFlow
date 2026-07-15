@@ -3,6 +3,7 @@ const express = require("express");
 const {
   createTicket,
   getTickets,
+  updateTicketStatus,
 } = require("../controllers/ticketController");
 
 const {
@@ -20,5 +21,12 @@ router.post(
 );
 
 router.get("/", protect, getTickets);
+
+router.put(
+  "/:id",
+  protect,
+  authorizeRoles("Admin"),
+  updateTicketStatus
+);
 
 module.exports = router;
