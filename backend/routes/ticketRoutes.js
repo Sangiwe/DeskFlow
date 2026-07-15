@@ -2,6 +2,7 @@ const express = require("express");
 
 const {
   createTicket,
+  getTickets,
 } = require("../controllers/ticketController");
 
 const {
@@ -17,5 +18,7 @@ router.post(
   authorizeRoles("Employee"),
   createTicket
 );
+
+router.get("/", protect, getTickets);
 
 module.exports = router;

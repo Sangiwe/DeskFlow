@@ -43,6 +43,34 @@ const createTicket = async (req, res) => {
   }
 };
 
+const getTickets = async (req, res) => {
+  try {
+    let tickets;
+
+    if (req.user.role === "Admin") {
+      tickets = await Ticket.find().sort({ createdAt: -1 });
+    } else {
+      tickets = await Ticket.find({
+        createdBy: req.user.id,
+      }).sort({ createdAt: -1 });
+    }
+
+    return res.status(200).json({
+      success: true,
+      count: tickets.length,
+      tickets,
+    });
+  } catch (error) {
+    console.error(`Get tickets error: ${error.message}`);
+
+    return res.status(500).json({
+      success: false,
+      message: "An error occurred while retrieving tickets",
+    });
+  }
+};
+
 module.exports = {
   createTicket,
+  getTickets,
 };

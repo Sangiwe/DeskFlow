@@ -9,6 +9,13 @@ const users = [
     role: "Employee",
   },
   {
+    id: "employee-002",
+    name: "Second DeskFlow Employee",
+    email: "employee2@deskflow.com",
+    password: "employee2123",
+    role: "Employee",
+  },
+  {
     id: "admin-001",
     name: "DeskFlow Administrator",
     email: "admin@deskflow.com",
