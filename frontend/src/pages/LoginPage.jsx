@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import api from "../services/api";
 import "./LoginPage.css";
 
@@ -11,6 +13,9 @@ function LoginPage() {
 
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -49,9 +54,16 @@ function LoginPage() {
       const { token, user } = response.data;
 
       localStorage.setItem("deskflowToken", token);
-      localStorage.setItem("deskflowUser", JSON.stringify(user));
+      localStorage.setItem(
+        "deskflowUser",
+        JSON.stringify(user)
+      );
 
-      console.log("Logged-in user:", user);
+      if (user.role === "Admin") {
+        navigate("/admin", { replace: true });
+      } else {
+        navigate("/employee", { replace: true });
+      }
     } catch (requestError) {
       const message =
         requestError.response?.data?.message ||
@@ -62,8 +74,6 @@ function LoginPage() {
       setIsLoading(false);
     }
   };
-
-  const [showPassword, setShowPassword] = useState(false);
 
   return (
     <main className="login-page">
