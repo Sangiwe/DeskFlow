@@ -22,7 +22,7 @@ const users = [
     password: "thabang123",
     role: "Admin",
   },
-    {
+  {
     id: "admin-002",
     name: "Mukhethwa Magadani",
     email: "mukhethwa.magadani@deskflow.com",
