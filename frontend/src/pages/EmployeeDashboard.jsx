@@ -22,19 +22,12 @@ function EmployeeDashboard() {
     useState(true);
   const [ticketError, setTicketError] = useState("");
 
-  const getToken = () =>
-    localStorage.getItem("deskflowToken");
-
   const fetchTickets = async () => {
     try {
       setIsLoadingTickets(true);
       setTicketError("");
 
-      const response = await api.get("/tickets", {
-        headers: {
-          Authorization: `Bearer ${getToken()}`,
-        },
-      });
+      const response = await api.get("/tickets");
 
       setTickets(response.data.tickets);
     } catch (requestError) {
@@ -52,15 +45,7 @@ function EmployeeDashboard() {
   }, []);
 
   const handleCreateTicket = async (ticketData) => {
-    const response = await api.post(
-      "/tickets",
-      ticketData,
-      {
-        headers: {
-          Authorization: `Bearer ${getToken()}`,
-        },
-      }
-    );
+    const response = await api.post("/tickets", ticketData);
 
     setTickets((currentTickets) => [
       response.data.ticket,

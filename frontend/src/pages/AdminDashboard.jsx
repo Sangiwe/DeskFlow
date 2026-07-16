@@ -18,18 +18,12 @@ function AdminDashboard() {
   const [pageError, setPageError] = useState("");
   const [updatingTicketId, setUpdatingTicketId] = useState("");
 
-  const token = localStorage.getItem("deskflowToken");
-
   const fetchTickets = async () => {
     try {
       setIsLoading(true);
       setPageError("");
 
-      const response = await api.get("/tickets", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await api.get("/tickets");
 
       setTickets(response.data.tickets);
     } catch (requestError) {
@@ -66,17 +60,10 @@ function AdminDashboard() {
       setUpdatingTicketId(ticketId);
       setPageError("");
 
-      const response = await api.put(
-        `/tickets/${ticketId}`,
-        {
+      const response = await api.put(`/tickets/${ticketId}`, {
           status: newStatus,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      
+      });
 
       setTickets((currentTickets) =>
         currentTickets.map((ticket) =>
