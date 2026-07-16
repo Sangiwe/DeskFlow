@@ -14,6 +14,14 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "Welcome to the DeskFlow API",
+    healthCheck: "/api/health",
+  });
+});
+
 app.use("/api/auth", authRoutes);
 app.use("/api/tickets", ticketRoutes);
 
