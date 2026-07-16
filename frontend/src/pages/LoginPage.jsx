@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import api from "../services/api";
@@ -16,17 +16,6 @@ function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
 
   const navigate = useNavigate();
-
-  useEffect(() => {
-    setFormData({
-      email: "",
-      password: "",
-      role: "Employee",
-    });
-
-    setShowPassword(false);
-    setError("");
-  }, []);
 
   const handleChange = (event) => {
     const { name, value } = event.target;

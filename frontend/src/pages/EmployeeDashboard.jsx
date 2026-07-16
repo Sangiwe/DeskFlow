@@ -22,25 +22,22 @@ function EmployeeDashboard() {
     useState(true);
   const [ticketError, setTicketError] = useState("");
 
-  const fetchTickets = async () => {
-    try {
-      setIsLoadingTickets(true);
-      setTicketError("");
-
-      const response = await api.get("/tickets");
-
-      setTickets(response.data.tickets);
-    } catch (requestError) {
-      setTicketError(
-        requestError.response?.data?.message ||
-          "Unable to load your tickets."
-      );
-    } finally {
-      setIsLoadingTickets(false);
-    }
-  };
-
   useEffect(() => {
+    const fetchTickets = async () => {
+      try {
+        const response = await api.get("/tickets");
+
+        setTickets(response.data.tickets);
+      } catch (requestError) {
+        setTicketError(
+          requestError.response?.data?.message ||
+            "Unable to load your tickets."
+        );
+      } finally {
+        setIsLoadingTickets(false);
+      }
+    };
+
     fetchTickets();
   }, []);
 

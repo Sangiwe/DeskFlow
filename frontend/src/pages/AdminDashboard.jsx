@@ -18,25 +18,22 @@ function AdminDashboard() {
   const [pageError, setPageError] = useState("");
   const [updatingTicketId, setUpdatingTicketId] = useState("");
 
-  const fetchTickets = async () => {
-    try {
-      setIsLoading(true);
-      setPageError("");
-
-      const response = await api.get("/tickets");
-
-      setTickets(response.data.tickets);
-    } catch (requestError) {
-      setPageError(
-        requestError.response?.data?.message ||
-          "Unable to load company tickets."
-      );
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   useEffect(() => {
+    const fetchTickets = async () => {
+      try {
+        const response = await api.get("/tickets");
+
+        setTickets(response.data.tickets);
+      } catch (requestError) {
+        setPageError(
+          requestError.response?.data?.message ||
+            "Unable to load company tickets."
+        );
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
     fetchTickets();
   }, []);
 
