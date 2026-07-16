@@ -105,7 +105,7 @@ function EmployeeDashboard() {
               {tickets.length}
             </span>
             <span className="summary-label">
-              Total requests
+              Total tickets
             </span>
           </div>
         </section>
@@ -119,17 +119,15 @@ function EmployeeDashboard() {
             <div className="section-heading">
               <div>
                 <span className="section-label">
-                  Request history
+                  Ticket history
                 </span>
                 <h2>My tickets</h2>
               </div>
-
-              <span className="section-number">02</span>
             </div>
 
             {isLoadingTickets && (
               <div className="dashboard-state">
-                Loading your requests...
+                Loading your tickets...
               </div>
             )}
 
@@ -143,7 +141,7 @@ function EmployeeDashboard() {
               !ticketError &&
               tickets.length === 0 && (
                 <div className="dashboard-state empty-state">
-                  <span>No requests yet</span>
+                  <span>No tickets yet</span>
                   <p>
                     Tickets you submit will appear here.
                   </p>

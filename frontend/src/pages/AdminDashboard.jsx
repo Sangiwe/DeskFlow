@@ -116,7 +116,7 @@ function AdminDashboard() {
               Admin workspace
             </span>
 
-            <h1>Service request overview</h1>
+            <h1>Ticket overview</h1>
 
             <p>
               Review and manage technical issues submitted across
@@ -186,7 +186,7 @@ function AdminDashboard() {
               <div className="dashboard-state empty-state">
                 <span>No tickets submitted</span>
                 <p>
-                  Employee service requests will appear here.
+                  Employee tickets will appear here.
                 </p>
               </div>
             )}

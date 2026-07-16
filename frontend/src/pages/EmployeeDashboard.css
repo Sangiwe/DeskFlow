@@ -167,13 +167,6 @@
   letter-spacing: -0.04em;
 }
 
-.section-number {
-  color: #98a2b3;
-  font-size: 0.72rem;
-  font-weight: 750;
-  letter-spacing: 0.1em;
-}
-
 .form-field textarea,
 .form-field select {
   width: 100%;

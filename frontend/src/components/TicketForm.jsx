@@ -57,11 +57,10 @@ function TicketForm({ onTicketCreated }) {
     <section className="dashboard-card ticket-form-card">
       <div className="section-heading">
         <div>
-          <span className="section-label">New request</span>
+          <span className="section-label">New ticket</span>
           <h2>Report an IT issue</h2>
         </div>
 
-        <span className="section-number">01</span>
       </div>
 
       <form onSubmit={handleSubmit}>
@@ -119,7 +118,7 @@ function TicketForm({ onTicketCreated }) {
           className="primary-button"
           disabled={isSubmitting}
         >
-          {isSubmitting ? "Submitting..." : "Submit request"}
+          {isSubmitting ? "Submitting..." : "Submit ticket"}
           {!isSubmitting && <span aria-hidden="true">↗</span>}
         </button>
       </form>

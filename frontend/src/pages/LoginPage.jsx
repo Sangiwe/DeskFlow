@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import api from "../services/api";
@@ -17,6 +17,17 @@ function LoginPage() {
 
   const navigate = useNavigate();
 
+  useEffect(() => {
+    setFormData({
+      email: "",
+      password: "",
+      role: "Employee",
+    });
+
+    setShowPassword(false);
+    setError("");
+  }, []);
+
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -29,11 +40,13 @@ function LoginPage() {
   };
 
   const handleRoleChange = (role) => {
-    setFormData((currentFormData) => ({
-      ...currentFormData,
+    setFormData({
+      email: "",
+      password: "",
       role,
-    }));
+    });
 
+    setShowPassword(false);
     setError("");
   };
 
@@ -154,7 +167,7 @@ function LoginPage() {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="Enter your email"
-                  autoComplete="email"
+                  autoComplete="off"
                 />
               </div>
 
@@ -169,7 +182,7 @@ function LoginPage() {
                       value={formData.password}
                       onChange={handleChange}
                       placeholder="Enter your password"
-                      autoComplete="current-password"
+                      autoComplete="off"
                     />
 
                     <button
